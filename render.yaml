@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: task-grader
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: AGENT_NAME
+        value: task-grader
+      - key: AGENT_VERSION
+        value: 0.1.0
+      - key: AGENT_DESCRIPTION
+        value: Grades Taskmarket submissions for requesters.
+      - key: PAYMENTS_NETWORK
+        value: eip155:8453
+      - key: PAYMENTS_DESTINATION
+        value: static
+      - key: PAYMENTS_FACILITATOR_URL
+        value: https://facilitator.daydreams.systems
+      - key: PAYMENTS_RECEIVABLE_ADDRESS
+        value: 0xcC017a87b944374DbF8589bd7118472707e7b840
+      # Secrets — set via Render dashboard, not this file
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: PAYMENTS_FACILITATOR_AUTH
+        sync: false

@@ -1,0 +1,11 @@
+.git
+.gitignore
+node_modules
+.env
+.env.*
+.data
+*.log
+src/test-grader.ts
+README.md
+AGENTS.md
+template.schema.json
