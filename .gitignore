@@ -1,0 +1,22 @@
+# secrets — never commit
+.env
+.env.local
+.env.*.local
+
+# deps
+node_modules/
+
+# dev artifacts
+.DS_Store
+*.log
+dist/
+build/
+
+# bun
+.bun/
+
+# local-only test harness with absolute paths
+src/test-grader.ts
+
+# runtime state
+.data/
