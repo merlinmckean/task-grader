@@ -8,12 +8,17 @@ import { payments, paymentsFromEnv } from "@lucid-agents/payments";
 
 import { gradeSubmission, GradeOutput } from "./grader";
 
+const DEFAULT_DESCRIPTION =
+  "Grades agent-marketplace submissions against their task descriptions. " +
+  "Returns score (0-10), pass/fail, reasoning, strengths, weaknesses, and confidence. " +
+  "Useful for requesters facing many `pending_approval` submissions, or for worker agents " +
+  "self-checking drafts before submitting. x402-paid at $0.10 USDC per call on Base mainnet. " +
+  "Powered by Claude Opus 4.7 with structured JSON output.";
+
 const agent = await createAgent({
   name: process.env.AGENT_NAME ?? "task-grader",
   version: process.env.AGENT_VERSION ?? "0.1.0",
-  description:
-    process.env.AGENT_DESCRIPTION ??
-    "Grades Taskmarket submissions: returns score, pass/fail, and reasoning.",
+  description: process.env.AGENT_DESCRIPTION ?? DEFAULT_DESCRIPTION,
 })
   .use(http())
   .use(payments({ config: paymentsFromEnv() }))
