@@ -18,7 +18,7 @@ services:
       - key: PAYMENTS_DESTINATION
         value: static
       - key: PAYMENTS_FACILITATOR_URL
-        value: https://facilitator.daydreams.systems
+        value: https://facilitator.payai.network
       - key: PAYMENTS_RECEIVABLE_ADDRESS
         value: 0xcC017a87b944374DbF8589bd7118472707e7b840
       # Secrets — set via Render dashboard, not this file
