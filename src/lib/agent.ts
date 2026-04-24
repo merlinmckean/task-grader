@@ -18,7 +18,9 @@ const DEFAULT_DESCRIPTION =
 const agent = await createAgent({
   name: process.env.AGENT_NAME ?? "task-grader",
   version: process.env.AGENT_VERSION ?? "0.1.0",
-  description: process.env.AGENT_DESCRIPTION ?? DEFAULT_DESCRIPTION,
+  // Description is hardcoded so Render env var overrides don't silently clobber
+  // the discoverability-tuned copy.
+  description: DEFAULT_DESCRIPTION,
 })
   .use(http())
   .use(payments({ config: paymentsFromEnv() }))
